@@ -1,0 +1,362 @@
+* { padding: 0; margin: 0;}
+a { text-decoration: none;}
+
+/* 自动放大搜索框 */
+.search
+{
+    position: relative;
+    width: 100%;
+}
+.text
+{
+    display: block;
+    width: 100px;
+    height: 50px;
+    transition: all 0.5s;
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.search:hover .text
+{
+    width: 400px;
+    border: 4px solid blue;
+    border-radius: 7px;
+}
+
+/* 实现单双格背景颜色不用的表格 */
+.sp
+{
+    position: absolute;
+    top: 2000px;
+    left: 50%;
+    transform: translate(-50%,0);
+    margin-bottom: 100px;
+    text-align: left;
+}
+th
+{
+    background-color: black;
+    color: white;
+    font-weight: normal;
+}
+tr:nth-child(2),tr:nth-child(3),tr:nth-child(4)
+{
+    color: red;
+}
+tr:nth-child(2n-1)
+{
+    background-color: gray;
+}
+tr:nth-child(2n) td:nth-child(2)
+{
+    color: red;
+}
+
+
+/* 符合要求的轮播 */
+.box
+{
+    position: relative;
+    top: 200px;
+    width: 750px;
+    height: 1334px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+.pic_box
+{
+    position: absolute;
+    width: calc(750px*5);
+    animation: pic_roll 20s linear infinite;
+}
+.pic_box img
+{
+    float: left;
+}
+@keyframes pic_roll
+{
+    0%,20%
+    {
+        margin-left: 0;
+    }
+    25%,40%
+    {
+        margin-left: -750px;
+    }
+    45%,60%
+    {
+        margin-left: -1500px;
+    }
+    65%,80%
+    {
+        margin-left: -2250px;
+    }
+    85%,100%
+    {
+        margin-left: -3000px;
+    }
+}
+/* 设置圆圈属性 */
+.num
+{
+    width: 46px;
+    height: 46px;
+    border: 2px solid #eee;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 46px;
+    cursor: pointer;
+    background-color:transparent;
+    position: absolute;
+    bottom: 50px;
+    right: 10px;
+    display: block;
+    z-index: 10;
+    color: #fff;
+}
+/* 调整圆圈位置 */
+.num:nth-child(1)
+{
+    margin-right: 200px;
+}
+.num:nth-child(2)
+{
+    margin-right: 150px;
+}
+.num:nth-child(3)
+{
+    margin-right: 100px;
+}
+.num:nth-child(4)
+{
+    margin-right: 50px;
+}
+/* 圆圈鼠标悬浮效果 */
+.num:hover
+{
+    color: orange;
+    border-color: orange;
+    cursor: pointer;
+    background-color: #fff;
+}
+/* 鼠标悬浮暂停 */
+.num:hover,.pic_box:hover  /*若num还未部署动画，则num处的暂停不起作用 */
+{
+    animation-play-state: paused;
+}
+/* 圆圈悬浮动画 */
+@keyframes A1
+{
+    100%
+    {
+        margin-left: 0;
+    }
+}
+@keyframes A2
+{
+    100%
+    {
+        margin-left: -750px;
+    }
+}
+@keyframes A3
+{
+    100%
+    {
+        margin-left: -1500px;
+    }
+}
+@keyframes A4
+{
+    100%
+    {
+        margin-left: -2250px;
+    }
+}
+@keyframes A5
+{
+    100%
+    {
+        margin-left: -3000px;
+    }
+}
+#a1:hover ~ .pic_box
+{
+    animation: A1 0s linear forwards;
+}
+#a2:hover ~ .pic_box
+{
+    animation: A2 0s linear forwards;
+}
+#a3:hover ~ .pic_box
+{
+    animation: A3 0s linear forwards;
+}
+#a4:hover ~ .pic_box
+{
+    animation: A4 0s linear forwards;
+}
+#a5:hover ~ .pic_box
+{
+    animation: A5 0s linear forwards;
+}
+
+
+/* 不符合需求的轮播2 */
+/* ul,li
+{
+    list-style: none;
+}
+.slider-container
+{
+    width: 50%;
+    position: relative;
+    top: 200px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+.slider,.slider-item
+{
+    padding-bottom: 180%;
+}
+.slider-item
+{
+    width: 100%;
+    position: absolute;
+    background-size: 100%;
+    animation: disappear 20s infinite linear;
+    opacity: 0;
+}
+.slider-item1
+{
+    background-image: url(../images/manga.png);
+    animation-delay: -1s;
+}
+.slider-item2
+{
+    background-image: url(../images/manga2.png);
+    animation-delay: 3s;
+}
+.slider-item3
+{
+    background-image: url(../images/meido.png);
+    animation-delay: 7s;
+}
+.slider-item4
+{
+    background-image: url(../images/manga3.png);
+    animation-delay: 11s;
+}
+.slider-item5
+{
+    background-image: url(../images/manga4.png);
+    animation-delay: 15s;
+}
+@keyframes disappear
+{
+    0%
+    {
+        opacity: 0;
+    }
+
+    5%
+    {
+        opacity: 1;
+    }
+
+    20%
+    {
+        opacity: 1;
+    }
+
+    25%
+    {
+        opacity: 0;
+    }
+
+    100%
+    {
+        opacity: 0;
+    }         
+}
+
+.focus-container
+{
+    position: absolute;
+    bottom: 50px;
+    right: 0;
+    z-index: 10;
+
+}
+.focus-container li
+{
+    width: 50px;
+    height: 50px;
+    border: 2px solid #eee;
+    border-radius: 50%;
+    float: left;
+    margin-right: 10px;
+    background-color: transparent;
+    text-align: center;
+}
+.focus-container span
+{
+    color: #ffffff;
+    line-height: 50px;
+} */
+
+
+/* 不符合需求的轮播器 */
+/* @keyframes girls
+{
+    0%
+    {
+        margin-left: 0px;
+    }
+    100%
+    {
+        margin-left: -800px;
+    }
+}
+.banner
+{
+    width: 410px;
+    height: 712px;
+    position: absolute;
+    top: 150px;
+    left: 50%;
+    transform: translate(-50%,0);
+    overflow: hidden;
+}
+.picture
+{
+    width: 1300px;
+    height: 712px;
+    animation: girls 4s linear infinite forwards;
+}
+.picture img
+{
+    float: left;
+    width: 400px;
+}
+.number
+{
+    width: 80px;
+    height: 30px;
+    position: absolute;
+    top: 674px;
+    left: 320px;
+}
+.num1,.num2,.num3
+{
+    float: left;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    line-height: 20px;
+    color: white;
+    margin: 2px;
+    border: 1px solid #ffffff;
+} */
